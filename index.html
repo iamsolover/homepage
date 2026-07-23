@@ -104,17 +104,25 @@ nav.scrolled .brand,nav.scrolled a{color:var(--ink)}
 .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 
 /* CLIENT MARQUEE */
-.marquee{background:var(--ink);color:var(--cream);padding:1.5rem 0;overflow:hidden;position:relative;white-space:nowrap}
-.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:12%;z-index:2;pointer-events:none}
-.marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
-.marquee::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
-.marquee-track{display:inline-flex;align-items:center;gap:3.5rem;animation:scroll 42s linear infinite;padding-left:3.5rem}
+.marquee{background:var(--ink);overflow:hidden;position:relative}
+.marquee-row{overflow:hidden;white-space:nowrap;position:relative;padding:1.3rem 0}
+.marquee-row:first-child{background:var(--ink);color:var(--cream)}
+.marquee-row:last-child{background:var(--paper-2);color:var(--deep)}
+.marquee-row::before,.marquee-row::after{content:"";position:absolute;top:0;bottom:0;width:12%;z-index:2;pointer-events:none}
+.marquee-row:first-child::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.marquee-row:first-child::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
+.marquee-row:last-child::before{left:0;background:linear-gradient(90deg,var(--paper-2),transparent)}
+.marquee-row:last-child::after{right:0;background:linear-gradient(270deg,var(--paper-2),transparent)}
+.marquee-track{display:inline-flex;align-items:center;gap:3.5rem;padding-left:3.5rem;animation:scroll 52s linear infinite}
+.marquee-track.reverse{animation:scroll-rev 52s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-label{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-soft);opacity:.8;margin-right:1rem}
 .m-item{font-weight:700;font-size:1.15rem;letter-spacing:.01em;opacity:.85;transition:opacity .3s}
 .m-item:hover{opacity:1;color:var(--teal-soft)}
+.marquee-row:last-child .m-item:hover{color:var(--teal)}
 .m-dot{color:var(--teal);opacity:.5;font-size:.8rem}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes scroll-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;white-space:normal}}
 
 /* WHAT WE DO bar */
@@ -235,6 +243,11 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .svc:hover{background:linear-gradient(90deg,rgba(78,158,142,.07),transparent);padding-left:1rem}
 .svc .name{font-weight:700;font-size:1.08rem}
 .svc .name small{display:block;font-size:.8rem;color:#6a7a76;font-weight:400;margin-top:.15rem}
+.svc-link{text-decoration:none;color:inherit;cursor:pointer}
+.svc-link .tag{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);
+  border:1px solid var(--teal);border-radius:100px;padding:.15rem .6rem;margin-left:.6rem;vertical-align:middle;opacity:.75;
+  display:inline-block;transition:all .3s}
+.svc-link:hover .tag{background:var(--teal);color:#fff;opacity:1}
 .svc .price{font-size:.82rem;font-weight:700;letter-spacing:.02em;color:var(--deep)}
 .svc .time{font-size:.78rem;color:#6a7a76;letter-spacing:.03em;text-align:right;min-width:9ch;font-weight:500}
 @media(max-width:720px){
@@ -289,9 +302,34 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .q-title{font-weight:800;font-size:1.45rem;letter-spacing:-.01em;margin-bottom:1.8rem;line-height:1.3}
 .opts{display:grid;gap:.7rem}
 .opt{padding:1.05rem 1.3rem;border:1px solid rgba(255,255,255,.2);border-radius:5px;cursor:pointer;
-  transition:all .3s;font-size:.98rem;color:#fff;background:transparent;text-align:left;font-family:inherit;font-weight:500}
+  transition:all .3s;font-size:.98rem;color:#fff;background:transparent;text-align:left;font-family:inherit;font-weight:500;
+  display:flex;align-items:center;gap:.9rem}
 .opt:hover{border-color:var(--teal-soft);background:rgba(143,196,182,.09)}
 .opt.sel{border-color:var(--teal-soft);background:rgba(143,196,182,.16)}
+/* 브랜드 도형 마크 — 스텝별로 다른 스타일 */
+.opt::before{content:"";width:15px;height:12px;flex-shrink:0;transition:all .35s ease;
+  clip-path:polygon(65% 0%, 100% 55%, 11% 100%, 0% 68%)}
+/* STEP 1 — 채워진 도형 */
+.q-step[data-step="1"] .opt::before{background:var(--teal-soft);opacity:.7}
+.q-step[data-step="1"] .opt:nth-child(2)::before{transform:rotate(90deg)}
+.q-step[data-step="1"] .opt:nth-child(3)::before{transform:rotate(180deg)}
+.q-step[data-step="1"] .opt:nth-child(4)::before{transform:rotate(270deg)}
+/* STEP 2 — 라인 드로잉 */
+.q-step[data-step="2"] .opt::before{background:none;clip-path:none;
+  border:1.5px solid var(--teal-soft);opacity:.7;
+  transform:skewX(-12deg) rotate(-6deg)}
+.q-step[data-step="2"] .opt:nth-child(2)::before{transform:skewX(-12deg) rotate(84deg)}
+.q-step[data-step="2"] .opt:nth-child(3)::before{transform:skewX(-12deg) rotate(174deg)}
+.q-step[data-step="2"] .opt:nth-child(4)::before{transform:skewX(-12deg) rotate(264deg)}
+.q-step[data-step="2"] .opt:nth-child(5)::before{transform:skewX(-12deg) rotate(40deg)}
+/* STEP 3 — 그라데이션 도형 */
+.q-step[data-step="3"] .opt::before{background:linear-gradient(135deg,var(--aqua),var(--teal));opacity:.7}
+.q-step[data-step="3"] .opt:nth-child(2)::before{transform:rotate(90deg)}
+.q-step[data-step="3"] .opt:nth-child(3)::before{transform:rotate(180deg)}
+.q-step[data-step="3"] .opt:nth-child(4)::before{transform:rotate(270deg)}
+/* 선택 시 강조 */
+.opt.sel::before{opacity:1}
+.opt:hover::before{opacity:.85}
 .check-nav{display:flex;justify-content:space-between;margin-top:2.4rem}
 .mini-btn{background:none;border:none;color:rgba(255,255,255,.6);font-family:inherit;font-size:.78rem;
   font-weight:600;letter-spacing:.08em;cursor:pointer;transition:color .3s;text-transform:uppercase}
@@ -360,42 +398,65 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
 
 <!-- CLIENT MARQUEE -->
 <div class="marquee" aria-label="함께한 브랜드">
-  <div class="marquee-track">
-    <span class="marquee-label">Trusted&nbsp;Brands</span>
-    <span class="m-item">오뚜기</span><span class="m-dot">✦</span>
-    <span class="m-item">현대자동차</span><span class="m-dot">✦</span>
-    <span class="m-item">제네시스</span><span class="m-dot">✦</span>
-    <span class="m-item">배스킨라빈스</span><span class="m-dot">✦</span>
-    <span class="m-item">삼성 갤럭시</span><span class="m-dot">✦</span>
-    <span class="m-item">페라리</span><span class="m-dot">✦</span>
-    <span class="m-item">롯데 빼빼로</span><span class="m-dot">✦</span>
-    <span class="m-item">휘슬러</span><span class="m-dot">✦</span>
-    <span class="m-item">이케아</span><span class="m-dot">✦</span>
-    <span class="m-item">쿠팡</span><span class="m-dot">✦</span>
-    <span class="m-item">한샘</span><span class="m-dot">✦</span>
-    <span class="m-item">라네즈</span><span class="m-dot">✦</span>
-    <span class="m-item">캠핏</span><span class="m-dot">✦</span>
-    <span class="m-item">KINDLOVE</span><span class="m-dot">✦</span>
-    <span class="m-item">매쓰플랫</span><span class="m-dot">✦</span>
-    <span class="m-item">집토스</span><span class="m-dot">✦</span>
-    <!-- 끊김 없는 루프를 위한 복제 -->
-    <span class="marquee-label" aria-hidden="true">Trusted&nbsp;Brands</span>
-    <span class="m-item" aria-hidden="true">오뚜기</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">현대자동차</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">제네시스</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">배스킨라빈스</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">삼성 갤럭시</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">페라리</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">롯데 빼빼로</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">휘슬러</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">이케아</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">쿠팡</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">한샘</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">라네즈</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">캠핏</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">KINDLOVE</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">매쓰플랫</span><span class="m-dot" aria-hidden="true">✦</span>
-    <span class="m-item" aria-hidden="true">집토스</span><span class="m-dot" aria-hidden="true">✦</span>
+  <div class="marquee-row">
+    <div class="marquee-track">
+      <span class="marquee-label">Trusted&nbsp;Brands</span>
+      <span class="m-item">오뚜기참기름</span><span class="m-dot">✦</span>
+      <span class="m-item">현대자동차</span><span class="m-dot">✦</span>
+      <span class="m-item">SHUCLE</span><span class="m-dot">✦</span>
+      <span class="m-item">제네시스</span><span class="m-dot">✦</span>
+      <span class="m-item">배스킨라빈스</span><span class="m-dot">✦</span>
+      <span class="m-item">삼성 갤럭시</span><span class="m-dot">✦</span>
+      <span class="m-item">페라리</span><span class="m-dot">✦</span>
+      <span class="m-item">빼빼로</span><span class="m-dot">✦</span>
+      <span class="m-item">휘슬러</span><span class="m-dot">✦</span>
+      <span class="m-item">이케아</span><span class="m-dot">✦</span>
+      <span class="m-item">쿠팡</span><span class="m-dot">✦</span>
+      <span class="m-item">한샘</span><span class="m-dot">✦</span>
+      <span class="m-item">라네즈</span><span class="m-dot">✦</span>
+      <span class="marquee-label" aria-hidden="true">Trusted&nbsp;Brands</span>
+      <span class="m-item" aria-hidden="true">오뚜기참기름</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">현대자동차</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">SHUCLE</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">제네시스</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">배스킨라빈스</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">삼성 갤럭시</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">페라리</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">빼빼로</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">휘슬러</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">이케아</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">쿠팡</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">한샘</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">라네즈</span><span class="m-dot" aria-hidden="true">✦</span>
+    </div>
+  </div>
+  <div class="marquee-row">
+    <div class="marquee-track reverse">
+      <span class="m-item">캠핏</span><span class="m-dot">✦</span>
+      <span class="m-item">KINDLOVE</span><span class="m-dot">✦</span>
+      <span class="m-item">매쓰플랫</span><span class="m-dot">✦</span>
+      <span class="m-item">집토스</span><span class="m-dot">✦</span>
+      <span class="m-item">IFC MALL</span><span class="m-dot">✦</span>
+      <span class="m-item">NEUVV</span><span class="m-dot">✦</span>
+      <span class="m-item">KB국민은행</span><span class="m-dot">✦</span>
+      <span class="m-item">현대카드</span><span class="m-dot">✦</span>
+      <span class="m-item">레놉티</span><span class="m-dot">✦</span>
+      <span class="m-item">일리윤</span><span class="m-dot">✦</span>
+      <span class="m-item">백산수</span><span class="m-dot">✦</span>
+      <span class="m-item">EVOTO</span><span class="m-dot">✦</span>
+      <span class="m-item" aria-hidden="true">캠핏</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">KINDLOVE</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">매쓰플랫</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">집토스</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">IFC MALL</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">NEUVV</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">KB국민은행</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">현대카드</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">레놉티</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">일리윤</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">백산수</span><span class="m-dot" aria-hidden="true">✦</span>
+      <span class="m-item" aria-hidden="true">EVOTO</span><span class="m-dot" aria-hidden="true">✦</span>
+    </div>
   </div>
 </div>
 
@@ -448,8 +509,8 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
         <p>창업가와 실무자를 위한 맞춤 교육과 강연도 꾸준히 진행하고 있습니다</p>
         <div class="stats">
           <div class="stat"><div class="n">20+</div><div class="l">Years</div></div>
-          <div class="stat"><div class="n">500+</div><div class="l">브랜드 개발</div></div>
-          <div class="stat"><div class="n">1:1</div><div class="l">브랜드 클래스</div></div>
+          <div class="stat"><div class="n">500+</div><div class="l">브랜드 참여 및 런칭</div></div>
+          <div class="stat"><div class="n">1:1</div><div class="l">상담 및 교육</div></div>
         </div>
       </div>
     </div>
@@ -500,17 +561,17 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
       <div class="flow-col reveal">
         <div class="en">Empty</div>
         <ul class="flow-list">
-          <li>브랜드가 복잡해지는 이유를 찾습니다</li>
-          <li>흩어진 메시지를 덜어냅니다</li>
-          <li>핵심 하나만 남깁니다</li>
+          <li>브랜드가 복잡해진 원인을 찾습니다</li>
+          <li>목표와 방향성을 재확인합니다</li>
+          <li>브랜드 과제를 좁히고 정리합니다</li>
         </ul>
       </div>
       <div class="flow-col reveal">
         <div class="en">Find</div>
         <ul class="flow-list">
-          <li>남길 핵심 가치를 정합니다</li>
-          <li>고객이 반응할 지점을 찾습니다</li>
-          <li>방향을 한 곳으로 모읍니다</li>
+          <li>남길 핵심 가치를 수집합니다</li>
+          <li>고객이 반응할 지점을 발견합니다</li>
+          <li>단계별 제작 우선순위를 찾습니다</li>
         </ul>
       </div>
       <div class="flow-col reveal">
@@ -533,7 +594,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
     <p class="lead-sub reveal" style="margin-bottom:2.5rem">각 항목을 눌러 자세히 살펴보세요</p>
 
     <!-- A. 상담 · 멘토링 -->
-    <div class="svc-group reveal" data-group>
+    <div class="svc-group reveal" data-group data-angle="a">
       <div class="svc-group-head">
         <span class="gletter">A</span>
         <span class="gname">상담 · 멘토링</span>
@@ -542,14 +603,14 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
       </div>
       <div class="svc-group-body">
         <div class="svc-list">
-          <div class="svc"><div class="name">브랜드 상담<small>사전 과제 · 상담 · 맞춤 견적</small></div><div class="price">65만원</div><div class="time">1~3일</div></div>
+          <div class="svc"><div class="name">브랜드 상담<small>사전 과제 · 상담 · 맞춤 견적서 2종 제공</small></div><div class="price">65 / 120 / 150만원</div><div class="time">1~3일</div></div>
           <div class="svc"><div class="name">브랜드 멘토링<small>1:1 맞춤 멘토링</small></div><div class="price">25만원</div><div class="time">60분</div></div>
         </div>
       </div>
     </div>
 
     <!-- B. 개발 · 디렉팅 -->
-    <div class="svc-group reveal" data-group>
+    <div class="svc-group reveal" data-group data-angle="b">
       <div class="svc-group-head">
         <span class="gletter">B</span>
         <span class="gname">개발 · 디렉팅</span>
@@ -563,7 +624,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
           <div class="svc"><div class="name">브랜드 통합 개발<small>네이밍 · BI · 언어 통합</small></div><div class="price">500만원~</div><div class="time">90일</div></div>
           <div class="svc expandable" id="pkgToggle">
             <div class="name">브랜드 런칭 패키지<small>전체 구축 · 통합 디렉팅</small><span class="tag">클릭하여 구성 보기</span></div>
-            <div class="price">1000만원~</div>
+            <div class="price">1500만원~</div>
             <div class="time">180일 이상</div>
             <div class="chevron"></div>
           </div>
@@ -584,7 +645,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
     </div>
 
     <!-- C. 교육 · 강연 -->
-    <div class="svc-group reveal" data-group>
+    <div class="svc-group reveal" data-group data-angle="c">
       <div class="svc-group-head">
         <span class="gletter">C</span>
         <span class="gname">교육 · 강연</span>
@@ -594,8 +655,12 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
       <div class="svc-group-body">
         <div class="svc-group-desc">예비창업자 · 실무자 · 대표 맞춤 진행</div>
         <div class="svc-list">
-          <div class="svc"><div class="name">카피라이팅 교육<small>브랜드 언어 · 카피 실습</small></div><div class="price">협의</div><div class="time">1일~</div></div>
-          <div class="svc"><div class="name">브랜딩 교육<small>브랜드 설계 · 방법론</small></div><div class="price">협의</div><div class="time">한 달~30일</div></div>
+          <div class="svc"><div class="name">실무 교육<small>카피라이팅 · 브랜딩</small></div><div class="price">협의</div><div class="time">1일~</div></div>
+          <a class="svc svc-link" href="https://solover.notion.site/df8a3bdc92394df69a51062ce763962e?pvs=4" target="_blank" rel="noopener">
+            <div class="name">브랜딩클래스<small>1:1 개념반 · 실전반</small><span class="tag">클릭하여 구성 보기</span></div>
+            <div class="price">협의</div>
+            <div class="time">30일~</div>
+          </a>
         </div>
       </div>
     </div>
@@ -674,7 +739,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
     <h2 class="contact-title reveal">함께 <span class="accent">비우고 채울</span><br>준비가 되셨나요?</h2>
     <p class="contact-sub reveal">브랜딩과 카피라이팅의 가치를 아는 분들을 기다립니다</p>
     <div class="contact-links reveal">
-      <a href="https://litt.ly/iamsolover" target="_blank" rel="noopener" class="btn btn-dark">바로 문의하기</a>
+      <a href="https://litt.ly/iamsolover" target="_blank" rel="noopener" class="btn btn-dark">빠른 문의하기</a>
       <a href="https://instagram.com/solover_branding" target="_blank" rel="noopener" class="btn btn-outline">쏠러버 인스타그램</a>
     </div>
   </div>
