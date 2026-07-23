@@ -25,7 +25,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 /* 앵커 이동 시 고정 nav에 가리지 않도록 여백 확보 */
-section[id],#wwd[id]{scroll-margin-top:180px}
+/* 앵커 이동 시: 섹션 내부 패딩 보정해 내용이 nav 바로 아래 자연스럽게 오도록 */
+section[id],#wwd[id]{scroll-margin-top:15px}
 body{
   font-family:var(--sans);color:var(--ink);background:var(--paper);
   line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;
