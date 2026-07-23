@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -159,7 +158,8 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.6rem}
 .sec-title{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:1.4rem}
 .sec-title .accent{color:var(--teal)}
-.lead-sub{color:#3c524e;max-width:44ch}
+.lead-sub{font-size:1.12rem;font-weight:500;color:#2f4844;line-height:1.7;max-width:44ch;word-break:keep-all}
+.lead-sub-dark{font-size:1.12rem;font-weight:500;color:rgba(255,255,255,.88);line-height:1.7;max-width:44ch;word-break:keep-all}
 .solution-headline{font-weight:800;font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.3;letter-spacing:-.02em;margin-bottom:1.6rem;color:var(--deep)}
 .solution-headline .accent{color:var(--teal)}
 
@@ -168,13 +168,27 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 
 /* IAM */
 #iam{background:var(--paper)}
-.iam-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start;margin-top:1rem}
-@media(max-width:820px){.iam-grid{grid-template-columns:1fr}}
-.iam-lead{font-weight:700;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.4;letter-spacing:-.01em}
-.iam-body p{margin-bottom:1.2rem;color:#3c524e}
-.stats{display:flex;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap}
-.stat .n{font-weight:800;font-size:2.6rem;line-height:1;color:var(--deep);letter-spacing:-.02em}
-.stat .l{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-top:.5rem}
+.iam-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,7vw,6rem);align-items:start;margin-top:1.5rem}
+@media(max-width:820px){.iam-grid{grid-template-columns:1fr;gap:2.5rem}}
+/* 왼쪽 — 감성 */
+.iam-role{font-size:.82rem;font-weight:600;letter-spacing:.1em;color:#6a7a76;margin-top:2rem;
+  display:flex;align-items:center;gap:.8rem}
+.iam-role::before{content:"";width:28px;height:1px;background:var(--teal-pale)}
+.iam-role .accent{color:var(--teal);font-weight:700}
+.iam-lead{font-weight:800;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;letter-spacing:-.025em;color:var(--ink);margin:0}
+.iam-lead .accent{color:var(--teal)}
+.iam-sub{font-size:1.12rem;font-weight:500;color:#2f4844;line-height:1.7;margin-top:1.6rem;letter-spacing:0;
+  padding-left:1rem;border-left:2px solid var(--teal-pale);word-break:keep-all}
+/* 오른쪽 — 신뢰 */
+.iam-body{padding-top:.4rem}
+.iam-body p{margin-bottom:1.5rem;color:#6a7a76;font-weight:400;line-height:1.75;word-break:keep-all}
+.iam-body p:last-child{margin-bottom:0}
+/* 하단 지표 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:clamp(3rem,6vh,4.5rem);
+  padding-top:2.5rem;border-top:1px solid var(--line)}
+@media(max-width:560px){.stats{grid-template-columns:1fr;gap:1.8rem;text-align:left}}
+.stat .n{font-weight:800;font-size:clamp(2.4rem,4vw,3.2rem);line-height:1;color:var(--deep);letter-spacing:-.03em}
+.stat .l{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-top:.6rem}
 
 /* SOLOVER manifesto — grainy teal panel */
 #solover{background:var(--ink);color:#fff;overflow:hidden}
@@ -185,13 +199,14 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
     linear-gradient(160deg,#0C2A2E,#123E42 70%,#0C2A2E);
 }
 #solover .wrap{position:relative;z-index:2}
-.manifesto{font-weight:800;font-size:clamp(1.8rem,4.5vw,3.2rem);line-height:1.25;letter-spacing:-.02em;max-width:20ch;margin:1.4rem 0 3rem}
+.manifesto{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin:1.4rem 0 0}
+.manifesto-sub{font-size:1.12rem;font-weight:500;color:rgba(255,255,255,.88);line-height:1.7;margin:1.4rem 0 3rem;word-break:keep-all}
 .manifesto .accent{color:var(--teal-soft)}
 /* Empty-Find-Fill 세로 단계형 */
 .eff{display:flex;flex-direction:column;margin-bottom:1rem;max-width:760px}
 .eff-item{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;padding:1.6rem 0;align-items:start}
-.eff-item .estep{font-size:.72rem;font-weight:800;letter-spacing:.16em;color:var(--teal-soft);
-  writing-mode:vertical-rl;text-orientation:mixed;padding-top:.2rem;white-space:nowrap;opacity:.9}
+.eff-item .estep{font-size:.74rem;font-weight:800;letter-spacing:.14em;color:var(--teal-soft);
+  padding-top:.45rem;white-space:nowrap;opacity:.9;min-width:5ch}
 .eff-item .ebody .en{font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.5rem}
 .eff-item .ebody .desc{font-size:1rem;opacity:.82;font-weight:400;line-height:1.6;max-width:44ch;
   word-break:keep-all;overflow-wrap:break-word}
@@ -212,15 +227,32 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem);margin-top:3rem}
 @media(max-width:760px){.flow{grid-template-columns:1fr}}
 .flow-col{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:clamp(1.6rem,2.5vw,2.2rem)}
-.flow-col .en{font-weight:800;font-size:1.7rem;letter-spacing:.01em;color:var(--deep);margin-bottom:.5rem}
-.flow-col .sub{font-size:.92rem;color:#5a6b67;font-weight:500;margin-bottom:1.3rem;line-height:1.5;word-break:keep-all}
-@media(max-width:1100px) and (min-width:761px){.flow-col .sub{font-size:.78rem}}
+.flow-col .en{font-weight:800;font-size:1.7rem;letter-spacing:.04em;color:var(--deep);margin-bottom:.5rem;text-transform:uppercase}
+.flow-col .sub{font-size:1rem;color:#5a6b67;font-weight:500;margin-bottom:1.3rem;line-height:1.5;word-break:keep-all}
+@media(max-width:1100px) and (min-width:761px){.flow-col .sub{font-size:.86rem}}
 .flow-list{list-style:none;counter-reset:s}
 .flow-list li{padding:.9rem 0;border-top:1px solid var(--line);display:flex;gap:1rem;align-items:baseline;word-break:keep-all}
 .flow-list li::before{content:"0"counter(s);counter-increment:s;font-weight:700;font-size:.78rem;color:var(--teal);min-width:2ch}
 .result-line{margin-top:3rem;padding:2.6rem 2rem;background:var(--ink);color:#fff;border-radius:6px;text-align:center;overflow:hidden}
 .result-line .r{font-weight:800;font-size:clamp(1.3rem,2.6vw,2rem);line-height:1.4;letter-spacing:-.01em;position:relative;z-index:2}
 .result-line .r .accent{color:var(--teal-soft)}
+
+/* SOLUTION RESULT 띠 */
+.sol-bar{position:relative;overflow:hidden;display:block;margin:0;
+  background:
+    radial-gradient(70% 180% at 18% 50%, rgba(237,243,241,.75), transparent 62%),
+    radial-gradient(60% 160% at 62% 20%, rgba(190,226,222,.7), transparent 64%),
+    radial-gradient(80% 200% at 92% 80%, rgba(143,214,217,.6), transparent 60%),
+    linear-gradient(100deg,#8FD6D9,#BEE2DE 45%,#A5DAD6 72%,#7FC4C0)}
+.sol-bar-inline{margin:2.5rem 0 0;width:100vw;position:relative;left:50%;transform:translateX(-50%)}
+.sol-bar-inline .sol-bar-inner{padding-left:clamp(1.4rem,5vw,3.5rem);padding-right:clamp(1.4rem,5vw,3.5rem)}
+.sol-bar-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem clamp(1.4rem,5vw,3.5rem)}
+.sol-tag{font-size:.95rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(12,42,46,.62);position:relative;z-index:2}
+.sol-strong{color:var(--ink);font-weight:800}
+.sol-hint{font-size:.7rem;font-weight:700;letter-spacing:.06em;color:#fff;
+  border:1px solid transparent;border-radius:100px;padding:.4rem 1rem;white-space:nowrap;
+  background:var(--ink);position:relative;z-index:2}
 
 /* SERVICES */
 #services{background:var(--paper)}
@@ -230,7 +262,9 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .svc-group-head:hover{padding-left:.6rem}
 .svc-group-head .gletter{font-weight:800;font-size:1rem;color:var(--teal);letter-spacing:.05em;min-width:1.5ch}
 .svc-group-head .gname{font-weight:800;font-size:1.3rem;letter-spacing:-.01em;flex:1}
-.svc-group-head .gunit{font-size:.72rem;color:#8a9a96;font-weight:500;letter-spacing:.03em;margin-right:.2rem}
+.svc-group-head .gunit{font-size:.72rem;color:#8a9a96;font-weight:500;letter-spacing:.03em;margin-right:.2rem;
+  opacity:0;transform:translateY(-3px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.svc-group.open .gunit{opacity:1;transform:none}
 .svc-group-head .gcount{font-size:.75rem;color:#6a7a76;font-weight:500;letter-spacing:.03em}
 .svc-group-head .gchev{width:16px;height:16px;position:relative;transition:transform .35s ease;flex-shrink:0}
 .svc-group-head .gchev::before,.svc-group-head .gchev::after{content:"";position:absolute;top:50%;width:8px;height:1.6px;background:var(--teal);transition:transform .35s}
@@ -295,6 +329,8 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
     linear-gradient(150deg,#0C2A2E,#123E42 72%,#0C2A2E);
 }
 #check .wrap{position:relative;z-index:2}
+.check-head{text-align:center;margin-bottom:.5rem}
+.check-head .lead-sub-dark{margin-left:auto;margin-right:auto}
 .check-card{max-width:660px;margin:2.8rem auto 0;background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:clamp(1.6rem,4vw,2.8rem);backdrop-filter:blur(6px)}
 .progress{display:flex;gap:.5rem;margin-bottom:2.4rem}
@@ -509,19 +545,22 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
 <section id="iam">
   <div class="wrap">
     <div class="eyebrow reveal">01 — I Am</div>
-    <h2 class="sec-title reveal">브랜드 디렉터 <span class="accent">박하</span></h2>
     <div class="iam-grid">
-      <div class="iam-lead reveal">비우고 채웁니다</div>
-      <div class="iam-body reveal">
-        <p>인하우스 광고대행사 카피라이터로 브랜드의 언어를 완성해 왔습니다</p>
-        <p>대기업 캠페인부터 스타트업 런칭까지 직접 상담과 개발을 돕고 있으며</p>
-        <p>창업가와 실무자를 위한 맞춤 교육과 강연도 꾸준히 진행하고 있습니다</p>
-        <div class="stats">
-          <div class="stat"><div class="n">20+</div><div class="l">Years</div></div>
-          <div class="stat"><div class="n">500+</div><div class="l">브랜드 참여 및 런칭</div></div>
-          <div class="stat"><div class="n">1:1</div><div class="l">상담 및 교육</div></div>
-        </div>
+      <div class="iam-left reveal">
+        <h2 class="iam-lead">비우고 <span class="accent">채웁니다</span></h2>
+        <div class="iam-sub">비울수록 보이니까 줄일수록 나아가니까</div>
+        <div class="iam-role">브랜드 디렉터 <span class="accent">박하</span></div>
       </div>
+      <div class="iam-body reveal">
+        <p>인하우스 광고대행사 카피라이터로<br>브랜드의 언어를 완성해 왔습니다</p>
+        <p>대기업 캠페인부터 스타트업 런칭까지<br>직접 상담과 개발을 돕고 있으며</p>
+        <p>창업가와 실무자를 위한 맞춤 교육과<br>강연도 함께 진행 중입니다</p>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="n">20+</div><div class="l">Years</div></div>
+      <div class="stat"><div class="n">500+</div><div class="l">Projects</div></div>
+      <div class="stat"><div class="n">1:1</div><div class="l">Consulting</div></div>
     </div>
   </div>
 </section>
@@ -531,29 +570,30 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
   <div class="manifesto-bg"></div>
   <div class="wrap">
     <div class="eyebrow reveal" style="color:var(--teal-soft)">02 — Why Solover</div>
-    <div class="manifesto reveal">비울수록 잘 보이니까<br><span class="accent">줄일수록 쭉 나아가니까</span></div>
+    <div class="manifesto reveal"><span class="accent">해결</span>을 사랑하는 사람들</div>
+    <p class="manifesto-sub reveal">쏠러버가 약속하는 3가지 해결</p>
     <div class="eff reveal">
       <div class="eff-item">
-        <div class="estep">01 — EMPTY</div>
+        <div class="estep">약속 01</div>
         <div class="ebody">
-          <div class="en">비웁니다</div>
-          <div class="desc">전문 상담으로 브랜드가 해야 할 일과<br>예산부터 줄여줍니다</div>
+          <div class="en">브랜드가 가벼워집니다</div>
+          <div class="desc">할 일과 예산부터 줄여드립니다</div>
         </div>
       </div>
       <div class="eff-arrow">↓</div>
       <div class="eff-item">
-        <div class="estep">02 — FIND</div>
+        <div class="estep">약속 02</div>
         <div class="ebody">
-          <div class="en">찾습니다</div>
-          <div class="desc">고객에게 매력적으로 보이는<br>핵심 가치와 방향을 찾습니다</div>
+          <div class="en">방향이 선명해집니다</div>
+          <div class="desc">브랜드의 핵심 가치를 찾아드립니다</div>
         </div>
       </div>
       <div class="eff-arrow">↓</div>
       <div class="eff-item">
-        <div class="estep">03 — FILL</div>
+        <div class="estep">약속 03</div>
         <div class="ebody">
-          <div class="en">채웁니다</div>
-          <div class="desc">쏠러버의 단계별 서비스로<br>심플하고 뾰족하게 채웁니다</div>
+          <div class="en">메시지가 뾰족해집니다</div>
+          <div class="desc">필요한 것만 남겨 채워드립니다</div>
         </div>
       </div>
     </div>
@@ -561,11 +601,19 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
 </section>
 
 <!-- 03 KEY SOLUTION -->
+<!-- SOLUTION BEFORE & AFTER 띠 -->
+<div class="sol-bar">
+  <div class="sol-bar-inner">
+    <span class="sol-tag"><span class="sol-strong">SOLUTION</span> BEFORE &amp; AFTER</span>
+    <span class="sol-hint">곧 오픈 예정</span>
+  </div>
+</div>
+
 <section id="solution">
   <div class="wrap">
     <div class="eyebrow reveal">03 — Key Solution</div>
-    <h2 class="sec-title reveal">한 줄로 설명되는 <span class="accent">브랜드로</span></h2>
-    <p class="lead-sub reveal">서비스를 파는 것이 아닙니다<br>브랜드가 정리되는 방식을 제안합니다</p>
+    <h2 class="sec-title reveal">한 줄로 설명되는 <span class="accent">브랜드가 되려면</span></h2>
+    <p class="lead-sub reveal">채우기 전 비우는 일부터</p>
     <div class="flow">
       <div class="flow-col reveal">
         <div class="en">Empty</div>
@@ -596,18 +644,18 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
 </section>
 
 <!-- 04 SERVICES -->
+
 <section id="services">
   <div class="wrap">
     <div class="eyebrow reveal">04 — Services</div>
     <h2 class="sec-title reveal">필요한 만큼 <span class="accent">단계대로</span></h2>
-    <p class="lead-sub reveal" style="margin-bottom:2.5rem">각 항목을 눌러 자세히 살펴보세요</p>
+    <p class="lead-sub reveal" style="margin-bottom:2.5rem">저마다 브랜드 상황이 다르니까</p>
 
     <!-- A. 상담 · 멘토링 -->
     <div class="svc-group reveal" data-group data-angle="a">
       <div class="svc-group-head">
         <span class="gletter">A</span>
         <span class="gname">상담 · 멘토링</span>
-        <span class="gunit">단위: 만원</span>
         <span class="gcount">2</span>
         <span class="gchev"></span>
       </div>
@@ -624,7 +672,6 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
       <div class="svc-group-head">
         <span class="gletter">B</span>
         <span class="gname">개발 · 디렉팅</span>
-        <span class="gunit">단위: 만원</span>
         <span class="gcount">4</span>
         <span class="gchev"></span>
       </div>
@@ -666,7 +713,7 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
       <div class="svc-group-body">
         <div class="svc-group-desc">예비창업자 · 실무자 · 대표 맞춤 진행</div>
         <div class="svc-list">
-          <div class="svc"><div class="name">실무 교육<small>카피라이팅 · 브랜딩</small></div><div class="price">협의</div><div class="time">1일~</div></div>
+          <div class="svc"><div class="name">실무 교육<small>카피라이팅 · 브랜딩</small></div><div class="price">50~</div><div class="time">1일~</div></div>
           <a class="svc svc-link" href="https://solover.notion.site/df8a3bdc92394df69a51062ce763962e?pvs=4" target="_blank" rel="noopener">
             <div class="name">브랜딩클래스<small>1:1 개념반 · 실전반</small><span class="tag">클릭하여 구성 보기</span></div>
             <div class="price"></div>
@@ -682,9 +729,11 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
 <section id="check" class="grain">
   <div class="check-bg"></div>
   <div class="wrap">
-    <div class="eyebrow reveal" style="color:var(--teal-soft)">05 — Self Check</div>
-    <h2 class="sec-title reveal" style="color:#fff">내 브랜드는 <span style="color:var(--teal-soft)">어디부터</span>일까</h2>
-    <p class="reveal" style="opacity:.8">3가지 질문에 답하면 지금 필요한 서비스를 안내합니다</p>
+    <div class="check-head">
+      <div class="eyebrow reveal" style="color:var(--teal-soft);justify-content:center">05 — Self Check</div>
+      <h2 class="sec-title reveal" style="color:#fff">내 브랜드는 <span style="color:var(--teal-soft)">어디부터</span>일까</h2>
+      <p class="lead-sub-dark reveal">셀프로 해보는 3단계 진단 테스트</p>
+    </div>
     <div class="check-card reveal">
       <div class="progress"><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
 
@@ -747,7 +796,7 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
 <section id="contact">
   <div class="wrap">
     <div class="eyebrow reveal" style="display:flex;justify-content:center">06 — Contact</div>
-    <h2 class="contact-title reveal">함께 <span class="accent">비우고 채울</span><br>준비가 되셨나요?</h2>
+    <h2 class="contact-title reveal">지금이 <span class="accent">정리할</span> 때라면</h2>
     <p class="contact-sub reveal">브랜딩과 카피라이팅의 가치를 아는 분들을 기다립니다</p>
     <div class="contact-links reveal">
       <a href="https://litt.ly/iamsolover" target="_blank" rel="noopener" class="btn btn-dark">빠른 문의하기</a>
