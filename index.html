@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,6 +24,8 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* 앵커 이동 시 고정 nav에 가리지 않도록 여백 확보 */
+section[id],#wwd[id]{scroll-margin-top:180px}
 body{
   font-family:var(--sans);color:var(--ink);background:var(--paper);
   line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;
@@ -46,6 +49,7 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;justify-content:space-between;align-items:center;
   padding:1.5rem clamp(1.4rem,5vw,3.5rem);transition:all .4s ease;
+  background:transparent;backdrop-filter:none;border-bottom:1px solid transparent;
 }
 nav .brand{font-weight:800;letter-spacing:.28em;font-size:.95rem;text-indent:.28em;color:#fff;transition:color .4s}
 .brand-logo{display:block;height:36px;width:88px;background-repeat:no-repeat;background-position:left center;background-size:contain}
@@ -62,7 +66,7 @@ nav.scrolled .brand,nav.scrolled a{color:var(--ink)}
 /* HERO — FLOAT style */
 .hero{
   min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;
-  padding:clamp(1.4rem,5vw,3.5rem);color:#fff;
+  padding:clamp(1.4rem,5vw,3.5rem);padding-top:clamp(6rem,10vh,8rem);color:#fff;
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
@@ -685,8 +689,12 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.targe
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 const nav=document.getElementById('nav');
-new IntersectionObserver(([e])=>nav.classList.toggle('scrolled',!e.isIntersecting),{threshold:.85})
-  .observe(document.querySelector('.hero'));
+// nav 배경: 실제 스크롤 위치 기준 (히어로 높이 변화에 영향받지 않음)
+function updateNav(){
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}
+updateNav();
+window.addEventListener('scroll', updateNav, {passive:true});
 
 // 서비스 그룹 아코디언 (A/B/C)
 document.querySelectorAll('.svc-group[data-group]').forEach(group=>{
