@@ -212,9 +212,11 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem);margin-top:3rem}
 @media(max-width:760px){.flow{grid-template-columns:1fr}}
 .flow-col{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:clamp(1.6rem,2.5vw,2.2rem)}
-.flow-col .en{font-weight:800;font-size:1.7rem;letter-spacing:.01em;color:var(--deep);margin-bottom:1.4rem}
+.flow-col .en{font-weight:800;font-size:1.7rem;letter-spacing:.01em;color:var(--deep);margin-bottom:.5rem}
+.flow-col .sub{font-size:.92rem;color:#5a6b67;font-weight:500;margin-bottom:1.3rem;line-height:1.5;word-break:keep-all}
+@media(max-width:1100px) and (min-width:761px){.flow-col .sub{font-size:.78rem}}
 .flow-list{list-style:none;counter-reset:s}
-.flow-list li{padding:.9rem 0;border-top:1px solid var(--line);display:flex;gap:1rem;align-items:baseline}
+.flow-list li{padding:.9rem 0;border-top:1px solid var(--line);display:flex;gap:1rem;align-items:baseline;word-break:keep-all}
 .flow-list li::before{content:"0"counter(s);counter-increment:s;font-weight:700;font-size:.78rem;color:var(--teal);min-width:2ch}
 .result-line{margin-top:3rem;padding:2.6rem 2rem;background:var(--ink);color:#fff;border-radius:6px;text-align:center;overflow:hidden}
 .result-line .r{font-weight:800;font-size:clamp(1.3rem,2.6vw,2rem);line-height:1.4;letter-spacing:-.01em;position:relative;z-index:2}
@@ -310,23 +312,21 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .opt:hover{border-color:var(--teal-soft);background:rgba(143,196,182,.09)}
 .opt.sel{border-color:var(--teal-soft);background:rgba(143,196,182,.16)}
 /* 브랜드 도형 마크 — 스텝별로 다른 스타일 */
-.opt::before{content:"";width:15px;height:12px;flex-shrink:0;transition:all .35s ease;
+.opt::before{content:"";width:17px;height:14px;flex-shrink:0;transition:all .35s ease;
   clip-path:polygon(65% 0%, 100% 55%, 11% 100%, 0% 68%)}
-/* STEP 1 — 채워진 도형 */
-.q-step[data-step="1"] .opt::before{background:var(--teal-soft);opacity:.7}
+/* STEP 1 — 틸 */
+.q-step[data-step="1"] .opt::before{background:var(--teal-soft);opacity:.85}
 .q-step[data-step="1"] .opt:nth-child(2)::before{transform:rotate(90deg)}
 .q-step[data-step="1"] .opt:nth-child(3)::before{transform:rotate(180deg)}
 .q-step[data-step="1"] .opt:nth-child(4)::before{transform:rotate(270deg)}
-/* STEP 2 — 라인 드로잉 */
-.q-step[data-step="2"] .opt::before{background:none;clip-path:none;
-  border:1.5px solid var(--teal-soft);opacity:.7;
-  transform:skewX(-12deg) rotate(-6deg)}
-.q-step[data-step="2"] .opt:nth-child(2)::before{transform:skewX(-12deg) rotate(84deg)}
-.q-step[data-step="2"] .opt:nth-child(3)::before{transform:skewX(-12deg) rotate(174deg)}
-.q-step[data-step="2"] .opt:nth-child(4)::before{transform:skewX(-12deg) rotate(264deg)}
-.q-step[data-step="2"] .opt:nth-child(5)::before{transform:skewX(-12deg) rotate(40deg)}
-/* STEP 3 — 그라데이션 도형 */
-.q-step[data-step="3"] .opt::before{background:linear-gradient(135deg,var(--aqua),var(--teal));opacity:.7}
+/* STEP 2 — 아쿠아 */
+.q-step[data-step="2"] .opt::before{background:var(--aqua);opacity:.85}
+.q-step[data-step="2"] .opt:nth-child(2)::before{transform:rotate(90deg)}
+.q-step[data-step="2"] .opt:nth-child(3)::before{transform:rotate(180deg)}
+.q-step[data-step="2"] .opt:nth-child(4)::before{transform:rotate(270deg)}
+.q-step[data-step="2"] .opt:nth-child(5)::before{transform:rotate(45deg)}
+/* STEP 3 — 페일 틸 */
+.q-step[data-step="3"] .opt::before{background:var(--teal-pale);opacity:.85}
 .q-step[data-step="3"] .opt:nth-child(2)::before{transform:rotate(90deg)}
 .q-step[data-step="3"] .opt:nth-child(3)::before{transform:rotate(180deg)}
 .q-step[data-step="3"] .opt:nth-child(4)::before{transform:rotate(270deg)}
@@ -364,7 +364,9 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 footer{background:var(--ink);color:rgba(255,255,255,.6);padding:2.8rem clamp(1.4rem,5vw,3.5rem);
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 footer .brand{font-weight:800;letter-spacing:.28em;color:#fff;font-size:.9rem}
-footer .fnote{font-size:.72rem;letter-spacing:.06em}
+footer .fnote{font-size:.72rem;letter-spacing:.06em;text-align:right;line-height:1.7}
+footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
+@media(max-width:720px){footer .fnote{text-align:left}}
 </style>
 </head>
 <body>
@@ -567,26 +569,26 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
     <div class="flow">
       <div class="flow-col reveal">
         <div class="en">Empty</div>
+        <div class="sub">브랜드의 핵심만 남기기 위해</div>
         <ul class="flow-list">
-          <li>브랜드가 복잡해진 원인을 찾습니다</li>
-          <li>목표와 방향성을 재확인합니다</li>
-          <li>브랜드 과제를 좁히고 정리합니다</li>
+          <li>복잡한 요소를 분류합니다</li>
+          <li>덜어낼 우선순위를 정합니다</li>
         </ul>
       </div>
       <div class="flow-col reveal">
         <div class="en">Find</div>
+        <div class="sub">브랜드 가치가 선명해질 때까지</div>
         <ul class="flow-list">
-          <li>남길 핵심 가치를 수집합니다</li>
-          <li>고객이 반응할 지점을 발견합니다</li>
-          <li>단계별 제작 우선순위를 찾습니다</li>
+          <li>고객의 고민과 시장의 틈을 찾습니다</li>
+          <li>브랜드의 숨은 매력을 발견합니다</li>
         </ul>
       </div>
       <div class="flow-col reveal">
         <div class="en">Fill</div>
+        <div class="sub">브랜드가 한 번에 와닿도록</div>
         <ul class="flow-list">
-          <li>핵심을 기준으로 방향을 세웁니다</li>
-          <li>필요한 언어와 요소만 설계합니다</li>
-          <li>일관된 메시지로 완성합니다</li>
+          <li>핵심가치에 맞춰 브랜드를 완성합니다</li>
+          <li>고객의 언어로 쉽고 가볍게 전달합니다</li>
         </ul>
       </div>
     </div>
@@ -756,7 +758,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
 
 <footer>
   <div class="brand"><span class="brand-logo" role="img" aria-label="SOLOVER"></span></div>
-  <div class="fnote">Subtract to find · © SOLOVER All Rights Reserved.</div>
+  <div class="fnote">Keep what matters · © SOLOVER All Rights Reserved.<br><span class="fnote-sub">본 사이트의 모든 콘텐츠와 디자인은 저작권법의 보호를 받으며 무단 복제 및 도용을 금합니다</span></div>
 </footer>
 
 <script>
