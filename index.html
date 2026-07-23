@@ -193,11 +193,13 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .eff-item .estep{font-size:.72rem;font-weight:800;letter-spacing:.16em;color:var(--teal-soft);
   writing-mode:vertical-rl;text-orientation:mixed;padding-top:.2rem;white-space:nowrap;opacity:.9}
 .eff-item .ebody .en{font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.5rem}
-.eff-item .ebody .desc{font-size:1rem;opacity:.82;font-weight:400;line-height:1.6;max-width:44ch}
+.eff-item .ebody .desc{font-size:1rem;opacity:.82;font-weight:400;line-height:1.6;max-width:44ch;
+  word-break:keep-all;overflow-wrap:break-word}
 .eff-arrow{color:var(--teal-soft);opacity:.5;font-size:1.3rem;margin:.2rem 0 .2rem 2.6rem;line-height:1}
 @media(max-width:720px){
   .eff-item{grid-template-columns:1fr;gap:.5rem}
   .eff-item .estep{writing-mode:horizontal-tb;margin-bottom:.3rem}
+  .eff-item .ebody .desc{font-size:.94rem;line-height:1.55}
   .eff-arrow{margin-left:.5rem}
 }
 .mvc{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid rgba(255,255,255,.18);padding-top:2.4rem}
@@ -226,6 +228,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .svc-group-head:hover{padding-left:.6rem}
 .svc-group-head .gletter{font-weight:800;font-size:1rem;color:var(--teal);letter-spacing:.05em;min-width:1.5ch}
 .svc-group-head .gname{font-weight:800;font-size:1.3rem;letter-spacing:-.01em;flex:1}
+.svc-group-head .gunit{font-size:.72rem;color:#8a9a96;font-weight:500;letter-spacing:.03em;margin-right:.2rem}
 .svc-group-head .gcount{font-size:.75rem;color:#6a7a76;font-weight:500;letter-spacing:.03em}
 .svc-group-head .gchev{width:16px;height:16px;position:relative;transition:transform .35s ease;flex-shrink:0}
 .svc-group-head .gchev::before,.svc-group-head .gchev::after{content:"";position:absolute;top:50%;width:8px;height:1.6px;background:var(--teal);transition:transform .35s}
@@ -474,22 +477,26 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
   <div class="wwd-panel" id="wwdPanel">
     <div class="wwd-panel-inner">
       <div class="wwd-col">
-        <div class="ch">Expertise</div>
+        <div class="ch">Copywriting</div>
         <ul>
-          <li>Brand Strategy</li>
           <li>Naming</li>
-          <li>Copywriting</li>
-          <li>Creative Direction</li>
-          <li>Brand Consulting</li>
+          <li>Slogan &amp; Tagline</li>
+          <li>Brand Message</li>
+          <li>Storytelling</li>
+          <li>Target &amp; Persona</li>
+          <li>Campaign Copy</li>
+          <li>Copywriting Class</li>
         </ul>
       </div>
       <div class="wwd-col">
-        <div class="ch">Services</div>
+        <div class="ch">Branding</div>
         <ul>
+          <li>Brand Strategy</li>
+          <li>Brand Identity</li>
+          <li>Creative Direction</li>
           <li>Brand Consulting</li>
           <li>Brand Mentoring</li>
-          <li>Brand Education</li>
-          <li>Brand Development</li>
+          <li>Branding Class</li>
         </ul>
       </div>
     </div>
@@ -528,7 +535,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
         <div class="estep">01 — EMPTY</div>
         <div class="ebody">
           <div class="en">비웁니다</div>
-          <div class="desc">전문 상담으로 브랜드가 해야 할 일과 예산부터 줄여줍니다</div>
+          <div class="desc">전문 상담으로 브랜드가 해야 할 일과<br>예산부터 줄여줍니다</div>
         </div>
       </div>
       <div class="eff-arrow">↓</div>
@@ -536,7 +543,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
         <div class="estep">02 — FIND</div>
         <div class="ebody">
           <div class="en">찾습니다</div>
-          <div class="desc">고객에게 매력적으로 보이는 핵심 가치와 방향을 찾습니다</div>
+          <div class="desc">고객에게 매력적으로 보이는<br>핵심 가치와 방향을 찾습니다</div>
         </div>
       </div>
       <div class="eff-arrow">↓</div>
@@ -544,7 +551,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
         <div class="estep">03 — FILL</div>
         <div class="ebody">
           <div class="en">채웁니다</div>
-          <div class="desc">쏠러버의 단계별 서비스로 심플하고 뾰족하게 채웁니다</div>
+          <div class="desc">쏠러버의 단계별 서비스로<br>심플하고 뾰족하게 채웁니다</div>
         </div>
       </div>
     </div>
@@ -598,13 +605,14 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
       <div class="svc-group-head">
         <span class="gletter">A</span>
         <span class="gname">상담 · 멘토링</span>
+        <span class="gunit">단위: 만원</span>
         <span class="gcount">2</span>
         <span class="gchev"></span>
       </div>
       <div class="svc-group-body">
         <div class="svc-list">
-          <div class="svc"><div class="name">브랜드 상담<small>사전 과제 · 상담 · 맞춤 견적서 2종 제공</small></div><div class="price">65 / 120 / 150만원</div><div class="time">1~3일</div></div>
-          <div class="svc"><div class="name">브랜드 멘토링<small>1:1 맞춤 멘토링</small></div><div class="price">25만원</div><div class="time">60분</div></div>
+          <div class="svc"><div class="name">브랜드 상담<small>사전 과제 · 상담 · 맞춤 견적서 2종 제공</small></div><div class="price">65 ｜ 120 ｜ 150</div><div class="time">1~3일</div></div>
+          <div class="svc"><div class="name">브랜드 멘토링<small>1:1 맞춤 멘토링</small></div><div class="price">25</div><div class="time">60분</div></div>
         </div>
       </div>
     </div>
@@ -614,17 +622,18 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
       <div class="svc-group-head">
         <span class="gletter">B</span>
         <span class="gname">개발 · 디렉팅</span>
+        <span class="gunit">단위: 만원</span>
         <span class="gcount">4</span>
         <span class="gchev"></span>
       </div>
       <div class="svc-group-body">
         <div class="svc-list">
-          <div class="svc"><div class="name">브랜드 커뮤니케이션 개발<small>메시지 · 카피 개발</small></div><div class="price">300만원~</div><div class="time">30일</div></div>
-          <div class="svc"><div class="name">브랜드 경험 개발<small>고객 접점 · 경험 설계</small></div><div class="price">200만원~</div><div class="time">60일</div></div>
-          <div class="svc"><div class="name">브랜드 통합 개발<small>네이밍 · BI · 언어 통합</small></div><div class="price">500만원~</div><div class="time">90일</div></div>
+          <div class="svc"><div class="name">브랜드 커뮤니케이션 개발<small>메시지 · 카피 개발</small></div><div class="price">300~</div><div class="time">30일</div></div>
+          <div class="svc"><div class="name">브랜드 경험 개발<small>고객 접점 · 경험 설계</small></div><div class="price">200~</div><div class="time">60일</div></div>
+          <div class="svc"><div class="name">브랜드 통합 개발<small>네이밍 · BI · 언어 통합</small></div><div class="price">500~</div><div class="time">90일</div></div>
           <div class="svc expandable" id="pkgToggle">
             <div class="name">브랜드 런칭 패키지<small>전체 구축 · 통합 디렉팅</small><span class="tag">클릭하여 구성 보기</span></div>
-            <div class="price">1500만원~</div>
+            <div class="price">1500~</div>
             <div class="time">180일 이상</div>
             <div class="chevron"></div>
           </div>
@@ -658,7 +667,7 @@ footer .fnote{font-size:.72rem;letter-spacing:.06em}
           <div class="svc"><div class="name">실무 교육<small>카피라이팅 · 브랜딩</small></div><div class="price">협의</div><div class="time">1일~</div></div>
           <a class="svc svc-link" href="https://solover.notion.site/df8a3bdc92394df69a51062ce763962e?pvs=4" target="_blank" rel="noopener">
             <div class="name">브랜딩클래스<small>1:1 개념반 · 실전반</small><span class="tag">클릭하여 구성 보기</span></div>
-            <div class="price">협의</div>
+            <div class="price"></div>
             <div class="time">30일~</div>
           </a>
         </div>
