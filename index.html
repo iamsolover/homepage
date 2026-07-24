@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -156,7 +157,7 @@ nav.scrolled .brand,nav.scrolled a{color:var(--ink)}
 section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative}
 .wrap{max-width:1120px;margin:0 auto}
 .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.6rem}
-.sec-title{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:1.4rem}
+.sec-title{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:1.4rem;word-break:keep-all}
 .sec-title .accent{color:var(--teal)}
 .lead-sub{font-size:1.12rem;font-weight:500;color:#2f4844;line-height:1.7;max-width:44ch;word-break:keep-all}
 .lead-sub-dark{font-size:1.12rem;font-weight:500;color:rgba(255,255,255,.88);line-height:1.7;max-width:44ch;word-break:keep-all}
@@ -175,7 +176,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
   display:flex;align-items:center;gap:.8rem}
 .iam-role::before{content:"";width:28px;height:1px;background:var(--teal-pale)}
 .iam-role .accent{color:var(--teal);font-weight:700}
-.iam-lead{font-weight:800;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;letter-spacing:-.025em;color:var(--ink);margin:0}
+.iam-lead{font-weight:800;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.15;letter-spacing:-.025em;color:var(--ink);margin:0;word-break:keep-all}
 .iam-lead .accent{color:var(--teal)}
 .iam-sub{font-size:1.12rem;font-weight:500;color:#2f4844;line-height:1.7;margin-top:1.6rem;letter-spacing:0;
   padding-left:1rem;border-left:2px solid var(--teal-pale);word-break:keep-all}
@@ -199,7 +200,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
     linear-gradient(160deg,#0C2A2E,#123E42 70%,#0C2A2E);
 }
 #solover .wrap{position:relative;z-index:2}
-.manifesto{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin:1.4rem 0 0}
+.manifesto{font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin:1.4rem 0 0;word-break:keep-all}
 .manifesto-sub{font-size:1.12rem;font-weight:500;color:rgba(255,255,255,.88);line-height:1.7;margin:1.4rem 0 3rem;word-break:keep-all}
 .manifesto .accent{color:var(--teal-soft)}
 /* Empty-Find-Fill 세로 단계형 */
@@ -207,7 +208,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .eff-item{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;padding:1.6rem 0;align-items:start}
 .eff-item .estep{font-size:.74rem;font-weight:800;letter-spacing:.14em;color:var(--teal-soft);
   padding-top:.45rem;white-space:nowrap;opacity:.9;min-width:5ch}
-.eff-item .ebody .en{font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.5rem}
+.eff-item .ebody .en{font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.5rem;word-break:keep-all}
 .eff-item .ebody .desc{font-size:1rem;opacity:.82;font-weight:400;line-height:1.6;max-width:44ch;
   word-break:keep-all;overflow-wrap:break-word}
 .eff-arrow{color:var(--teal-soft);opacity:.5;font-size:1.3rem;margin:.2rem 0 .2rem 2.6rem;line-height:1}
@@ -280,7 +281,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
   padding:1.4rem 0;border-bottom:1px solid var(--line);transition:padding .3s,background .3s}
 .svc:last-child{border-bottom:none}
 .svc:hover{background:linear-gradient(90deg,rgba(78,158,142,.07),transparent);padding-left:1rem}
-.svc .name{font-weight:700;font-size:1.08rem}
+.svc .name{font-weight:700;font-size:1.08rem;word-break:keep-all}
 .svc .name small{display:block;font-size:.8rem;color:#6a7a76;font-weight:400;margin-top:.15rem}
 .svc-link{text-decoration:none;color:inherit;cursor:pointer}
 .svc-link .tag{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);
@@ -340,7 +341,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 .q-step.active{display:block;animation:fade .5s ease}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .q-num{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-soft);margin-bottom:.8rem}
-.q-title{font-weight:800;font-size:1.45rem;letter-spacing:-.01em;margin-bottom:1.8rem;line-height:1.3}
+.q-title{font-weight:800;font-size:1.45rem;letter-spacing:-.01em;margin-bottom:1.8rem;line-height:1.3;word-break:keep-all}
 .opts{display:grid;gap:.7rem}
 .opt{padding:1.05rem 1.3rem;border:1px solid rgba(255,255,255,.2);border-radius:5px;cursor:pointer;
   transition:all .3s;font-size:.98rem;color:#fff;background:transparent;text-align:left;font-family:inherit;font-weight:500;
@@ -388,7 +389,7 @@ section{padding:clamp(5rem,13vh,9rem) clamp(1.4rem,5vw,3.5rem);position:relative
 
 /* CONTACT */
 #contact{background:var(--paper);text-align:center}
-.contact-title{font-weight:800;font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.4rem}
+.contact-title{font-weight:800;font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.4rem;word-break:keep-all}
 .contact-title .accent{color:var(--teal)}
 .contact-sub{color:#3c524e;margin-bottom:2.8rem}
 .contact-links{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
@@ -571,13 +572,13 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
   <div class="wrap">
     <div class="eyebrow reveal" style="color:var(--teal-soft)">02 — Why Solover</div>
     <div class="manifesto reveal"><span class="accent">해결</span>을 사랑하는 사람들</div>
-    <p class="manifesto-sub reveal">해결로 달라지는 3가지 변화 </p>
+    <p class="manifesto-sub reveal">쏠러버가 약속하는 3가지 해결</p>
     <div class="eff reveal">
       <div class="eff-item">
         <div class="estep">약속 01</div>
         <div class="ebody">
           <div class="en">브랜드가 가벼워집니다</div>
-          <div class="desc">해야 할 일부터 복잡함까지 줄입니다</div>
+          <div class="desc">할 일과 예산부터 줄여드립니다</div>
         </div>
       </div>
       <div class="eff-arrow">↓</div>
@@ -585,7 +586,7 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
         <div class="estep">약속 02</div>
         <div class="ebody">
           <div class="en">방향이 선명해집니다</div>
-          <div class="desc">고객이 선택할 핵심가치를 찾습니다</div>
+          <div class="desc">브랜드의 핵심 가치를 찾아드립니다</div>
         </div>
       </div>
       <div class="eff-arrow">↓</div>
@@ -593,7 +594,7 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
         <div class="estep">약속 03</div>
         <div class="ebody">
           <div class="en">메시지가 뾰족해집니다</div>
-          <div class="desc">꼭 필요한 것만 남겨 완성합니다</div>
+          <div class="desc">필요한 것만 남겨 채워드립니다</div>
         </div>
       </div>
     </div>
@@ -612,15 +613,15 @@ footer .fnote-sub{font-size:.66rem;opacity:.6;letter-spacing:.02em}
 <section id="solution">
   <div class="wrap">
     <div class="eyebrow reveal">03 — Key Solution</div>
-   <h2 class="sec-title reveal">브랜드가 한 줄로 <span class="accent"> 설명되려면</span></h2>
-    <p class="lead-sub reveal">채우기 전 비우는 일부터 제대로 </p>
+    <h2 class="sec-title reveal">브랜드가 한 줄로 <span class="accent">설명되려면</span></h2>
+    <p class="lead-sub reveal">채우기 전 비우는 일부터</p>
     <div class="flow">
       <div class="flow-col reveal">
         <div class="en">Empty</div>
         <div class="sub">브랜드의 핵심만 남기기 위해</div>
         <ul class="flow-list">
-          <li>복잡한 요소부터 덜어냅니다</li>
-          <li>비우고 정리할 우선순위를 정합니다</li>
+          <li>복잡한 요소를 분류합니다</li>
+          <li>덜어낼 우선순위를 정합니다</li>
         </ul>
       </div>
       <div class="flow-col reveal">
